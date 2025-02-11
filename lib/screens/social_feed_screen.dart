@@ -79,7 +79,15 @@ class _SocialFeedScreenState extends State<SocialFeedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Eternal Stream'),
+        title: const Text(
+          'Eternal Stream',
+          style: TextStyle(
+            fontFamily: 'fo17',
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.blue,
       ),
       body: Stack(
