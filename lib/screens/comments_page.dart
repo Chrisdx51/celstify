@@ -1,13 +1,16 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 
 class CommentsPage extends StatelessWidget {
   final String username;
   final String postText;
+  final String? postImage;
 
   const CommentsPage({
     Key? key,
     required this.username,
     required this.postText,
+    this.postImage,
   }) : super(key: key);
 
   @override
@@ -26,18 +29,27 @@ class CommentsPage extends StatelessWidget {
             ),
             subtitle: Text(postText),
           ),
+          if (postImage != null)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.file(
+                File(postImage!),
+                height: 200,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+            ),
           const Divider(),
           Expanded(
             child: ListView(
               children: const [
-                // Placeholder comments
                 ListTile(
                   title: Text('User1'),
                   subtitle: Text('This is a comment!'),
                 ),
                 ListTile(
                   title: Text('User2'),
-                  subtitle: Text('Another comment here!'),
+                  subtitle: Text('Another comment!'),
                 ),
               ],
             ),
@@ -57,7 +69,7 @@ class CommentsPage extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.send),
                   onPressed: () {
-                    // Handle sending the comment
+                    // Handle sending comment
                   },
                 ),
               ],
